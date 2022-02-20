@@ -1,0 +1,29 @@
+{
+  "name": "coininvestprogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comejtome508/CoinInvestProgram.git"
+  },
+  "author": "Youngnoh Goh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comejtome508/CoinInvestProgram/issues"
+  },
+  "homepage": "https://github.com/comejtome508/CoinInvestProgram#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11"
+  }
+}
