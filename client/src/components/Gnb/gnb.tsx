@@ -1,5 +1,5 @@
 import React, { useState, } from 'react';
-import { Menu, Button, Layout } from 'antd';
+import { Menu, Button, Layout, Breadcrumb } from 'antd';
 import {
   AppstoreOutlined,
   MenuUnfoldOutlined,
@@ -8,10 +8,15 @@ import {
   DesktopOutlined,
   ContainerOutlined,
   MailOutlined,
+  UserOutlined,
+  TeamOutlined,
+  FileOutlined,
+
+
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
-const { Header } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
 const Gnb = () => {
@@ -22,47 +27,30 @@ const Gnb = () => {
 
   return (
     <>
-    {/* //   <Layout style={{ height: '100%'}}> */}
-        <Header style={{ width: '100%', padding:"10px"}}>
-                <Button type="primary" onClick={toggle} style={{margin:"15px"}}>
-                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-            </Button>
-        </Header>
-         <div style={{ width: 256 , height: '100%'}}>
-            <Menu
-            defaultSelectedKeys={['0']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-            theme="dark"
-            inlineCollapsed={collapsed}
-            >
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
-                Option 1
-            </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
-                Option 2
-            </Menu.Item>
-            <Menu.Item key="3" icon={<ContainerOutlined />}>
-                Option 3
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-                <Menu.Item key="5">Option 5</Menu.Item>
-                <Menu.Item key="6">Option 6</Menu.Item>
-                <Menu.Item key="7">Option 7</Menu.Item>
-                <Menu.Item key="8">Option 8</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <SubMenu key="sub3" title="Submenu">
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
-                </SubMenu>
-            </SubMenu>
-            </Menu>
-        </div> 
-    </>
-    //   </Layout>
+    <Sider collapsible collapsed={collapsed} onCollapse={toggle}>
+      <div className="logo" style={{ height:"32px", margin: "16px", background:"rgba(255, 255, 255, 0.3)" }} />
+      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+        <Menu.Item key="1" icon={<PieChartOutlined />}>
+          Option 1
+        </Menu.Item>
+        <Menu.Item key="2" icon={<DesktopOutlined />}>
+          Option 2
+        </Menu.Item>
+        <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+          <Menu.Item key="3">Tom</Menu.Item>
+          <Menu.Item key="4">Bill</Menu.Item>
+          <Menu.Item key="5">Alex</Menu.Item>
+        </SubMenu>
+        <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
+          <Menu.Item key="6">Team 1</Menu.Item>
+          <Menu.Item key="8">Team 2</Menu.Item>
+        </SubMenu>
+        <Menu.Item key="9" icon={<FileOutlined />}>
+          Files
+        </Menu.Item>
+      </Menu>
+    </Sider>
+  </>
     
   );
   

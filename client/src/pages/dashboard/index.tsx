@@ -4,8 +4,7 @@ import Gnb from '../../components/Gnb/gnb';
 const index = () => {
   return (
       <>
-      <Gnb />
-    {/* <div>index</div> */}
+        실시간 차트
       </>
 
   )
