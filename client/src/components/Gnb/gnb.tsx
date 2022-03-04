@@ -20,7 +20,7 @@ const { Header, Sider, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
 const Gnb = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const toggle = () => {
         setCollapsed(prevState => !prevState);
     };
@@ -30,10 +30,10 @@ const Gnb = () => {
     <Sider collapsible collapsed={collapsed} onCollapse={toggle}>
       <div className="logo" style={{ height:"32px", margin: "16px", background:"rgba(255, 255, 255, 0.3)" }} />
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-        <Menu.Item key="1" icon={<PieChartOutlined />}>
-          Option 1
+        <Menu.Item key="1" icon={<DesktopOutlined />}>
+          대시보드
         </Menu.Item>
-        <Menu.Item key="2" icon={<DesktopOutlined />}>
+        <Menu.Item key="2" icon={<PieChartOutlined />}>
           Option 2
         </Menu.Item>
         <SubMenu key="sub1" icon={<UserOutlined />} title="User">
