@@ -1,5 +1,6 @@
 import React, { useState, } from 'react';
 import { Menu, Button, Layout, Breadcrumb } from 'antd';
+import {Link} from 'react-router-dom';
 import {
   AppstoreOutlined,
   MenuUnfoldOutlined,
@@ -31,9 +32,9 @@ const Gnb = () => {
       <div className="logo" style={{ height:"32px", margin: "16px", background:"rgba(255, 255, 255, 0.3)" }} />
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
         <Menu.Item key="1" icon={<DesktopOutlined />}>
-          대시보드
+          <Link to="/">대시보드</Link>
         </Menu.Item>
-        <Menu.Item key="2" icon={<PieChartOutlined />}>
+        {/* <Menu.Item key="2" icon={<PieChartOutlined />}>
           Option 2
         </Menu.Item>
         <SubMenu key="sub1" icon={<UserOutlined />} title="User">
@@ -47,7 +48,7 @@ const Gnb = () => {
         </SubMenu>
         <Menu.Item key="9" icon={<FileOutlined />}>
           Files
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
     </Sider>
   </>

@@ -1,10 +1,15 @@
+import RealtimeChart from '../../components/Charts/RealtimeChart';
 import React from 'react';
+
+
 import Gnb from '../../components/Gnb/gnb';
+import TradingTable from '../../components/TradingTable/tradingTable'; 
 
 const index = () => {
   return (
       <>
-        실시간 차트
+        <RealtimeChart />
+        <TradingTable />
       </>
 
   )

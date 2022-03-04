@@ -24,7 +24,7 @@ const App = () => {
               <Routes>
                   <Route path="/" element={<Dashboard />} />
               </Routes>
-              
+
             </Content>
           <Footer style={{ textAlign: 'center' }}> ©2022 Created by Youngnoh Goh</Footer>
       </Layout>
