@@ -1,9 +1,9 @@
-import RealtimeChart from '../../components/Charts/RealtimeChart';
+import RealtimeChart from '../../components/Charts';
 import React from 'react';
 
 
 import Gnb from '../../components/Gnb/gnb';
-import TradingTable from '../../components/TradingTable/tradingTable'; 
+import TradingTable from '../../components/TradingTable'; 
 
 const index = () => {
   return (
@@ -11,7 +11,6 @@ const index = () => {
         <RealtimeChart />
         <TradingTable />
       </>
-
   )
 }
 
