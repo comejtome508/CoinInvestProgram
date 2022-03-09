@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { QueryClientProvider, QueryClient } from 'react-query';
 import { Menu, Button, Layout, Breadcrumb } from 'antd';
 
 import Dashboard from '../pages/dashboard';
@@ -7,10 +8,11 @@ import Gnb from '../components/Gnb/gnb';
 import 'antd/dist/antd.css';
 
 const { Header, Sider, Content, Footer } = Layout;
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Layout style={{ minHeight: '100vh' }}>
         <Gnb />
           <Layout className="site-layout">
@@ -31,7 +33,7 @@ const App = () => {
 
       </Layout>
 
-    </>
+    </QueryClientProvider>
   );
 }
 
