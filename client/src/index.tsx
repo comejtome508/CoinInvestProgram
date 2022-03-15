@@ -10,6 +10,7 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil';
+import 'antd/dist/antd.less';
 
 ReactDOM.render(
     <BrowserRouter>
