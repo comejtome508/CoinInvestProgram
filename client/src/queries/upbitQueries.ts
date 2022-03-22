@@ -3,9 +3,11 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
+import crypto from 'crypto';
+import querystring from "querystring";
+
 const { sign, verify } = jwt;
-// const sign = require('jsonwebtoken').sign;
-// const uuidv4 = require('uuid/v4');
+
 
 const access_key = process.env.REACT_APP_UPBIT_ACCESS_KEY
 const secret_key = process.env.REACT_APP_UPBIT_SECRET_KEY
@@ -19,28 +21,29 @@ const payload = {
 const token = sign(payload, secret_key!);
 
 const getAccountsApi = () => {
-    return axios.get(server_url + "/v1/accounts", {headers: {Authorization: `Bearer ${token}`}})
+    return axios.get("https://cors-anywhere.herokuapp.com/"+server_url+"/v1/accounts", {headers: {Authorization: `Bearer ${token}`}})
 }
 
 const upbitApi = () => {
-    return axios.get(server_url + '/v1/market/all?isDetails=false')
+    return axios.get( "https://cors-anywhere.herokuapp.com/"+server_url+'/v1/market/all?isDetails=false')
 }
 
 export const useGetAccounts = () => {
-    const onSuccess = (data:any) => {
-        console.log('==========호출성공==========',data);
+    const onSuccess = (result:any) => {
+        console.log('==========호출성공==========',result);
     }
 
     const onError = (error:any) => {
-        console.log('==========호출실패==========',error);
+        console.error('==========호출실패==========',error);
     } 
 
     return useQuery('accounts', getAccountsApi, {
         onSuccess,
         onError,
         select: (data) => {
-            console.log(data);
-        }
+            const accountData = data.data;
+            return accountData;
+        },
     }) 
 
 }
@@ -58,7 +61,8 @@ export const useGetAllMarketCode = () => {
         onSuccess,
         onError,
         select: (data) => {
-            console.log(data);
+            console.log(data.data);
+            return data;
         }
     })
 }

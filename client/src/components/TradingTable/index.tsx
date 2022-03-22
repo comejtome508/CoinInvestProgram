@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Table } from 'antd';
-import axios from 'axios';
+import { useGetAccounts, useGetAllMarketCode } from '../../queries/upbitQueries';
+
 
 const TradingTable = () => {
     const dataSource = [
@@ -35,22 +36,15 @@ const TradingTable = () => {
           key: 'address',
         },
       ];
-
+      const { isLoading, data, isError, error, isFetching} = useGetAccounts();
    
-      useEffect(() => {
-
-        //Upbit API
-        const getApi = async() =>{
-            await axios.get('https://api.upbit.com/v1/market/all').then((res) =>{
-            console.log(res.data)
-            })
-            
-        }
-        getApi();
-    }, [])
+      useEffect(() => {}, [])
 
   return (
+    <>
     <Table dataSource={dataSource} columns={columns} />
+    </>
+    
   )
 }
 
