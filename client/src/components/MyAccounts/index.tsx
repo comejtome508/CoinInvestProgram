@@ -18,10 +18,9 @@ const MyAccounts = () => {
                 <strong>보유코인</strong>
                 <ul>
                     {data.map((coin:any, i:number)=>{
-                        return((i>0 && coin[i]) && <li>{coin[i]?.currency} : {coin[i]?.balance}</li>)
+                        return( i > 0 && <li>{coin.currency} : {coin.balance}</li>)
                         })}
                 </ul>
-                <span>{(data[1].balance)}</span>
             </div>
             <br/>
             <br/>
