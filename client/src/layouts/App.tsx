@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { Menu, Button, Layout, Breadcrumb } from 'antd';
 
-import Dashboard from '../pages/dashboard';
+import Dashboard from 'pages/dashboard';
 import Gnb from '../components/Gnb/gnb';
 import 'antd/dist/antd.css';
 

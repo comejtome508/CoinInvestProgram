@@ -4,7 +4,22 @@
         "module": "commonjs",
         "strict": true,
         "target": "es5",
-        "baseUrl": "./src"
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@components/*": ["src/components/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@pages/*": ["src/pages/*"],
+            "@utils/*": ["src/utils/*"],
+            "@typings/*": ["src/typings/*"],
+            "@queries/*": ["src/queries/*"],
+            "crypto": ["./node_modules/crypto-browserify"],
+            "stream": ["./node_modules/stream-browserify"],
+            "assert": ["./node_modules/assert"],
+            "http": ["./node_modules/stream-http"],
+            "https": ["./node_modules/https-browserify"],
+            "os": ["./node_modules/os-browserify"],
+          },
     },
-    "extends": "./tsconfig.paths.json" 
 }

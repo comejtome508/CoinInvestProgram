@@ -3,9 +3,9 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
-import crypto from 'crypto';
-// import querystring from "querystring";
-const queryEncode = require("querystring").encode
+import CryptoJS from "crypto-js";
+import queryString from "query-string";
+// const queryEncode = require("querystring").encode
 
 const { sign, verify } = jwt;
 
@@ -29,23 +29,31 @@ const body = {
 }
 
 const uuid_query = uuids.map(uuid => `uuids[]=${uuid}`).join('&')
-const query = queryEncode(non_array_body) + '&' + uuid_query
+// const query = queryEncode(non_array_body) + '&' + uuid_query
+const query = queryString.stringify(non_array_body) + '&' + uuid_query;
 
-const hash = crypto.createHash('sha512')
-const queryHash = hash.update(query, 'utf-8').digest('hex')
+// const hash = crypto.createHash('sha512')
+const hash = CryptoJS.SHA512(query);
+// const queryHash = hash.update(query, 'utf-8').digest('hex')
+const queryHash = hash.toString(CryptoJS.enc.Hex);
 
-const payload = {
+const accountPayload = {
+    access_key: access_key,
+    nonce: uuidv4(),
+}
+const orderPayload = {
     access_key: access_key,
     nonce: uuidv4(),
     query_hash: queryHash,
     query_hash_alg: 'SHA512',
 }
 
-const token = sign(payload, secret_key!);
+const accountToken = sign(accountPayload, secret_key!);
+const orderToken = sign(orderPayload, secret_key!);
 
 
 const getAccountsApi = () => {
-    return axios.get("https://cors-anywhere.herokuapp.com/"+server_url+"/v1/accounts", {headers: {Authorization: `Bearer ${token}`}})
+    return axios.get("https://cors-anywhere.herokuapp.com/"+server_url+"/v1/accounts", {headers: {Authorization: `Bearer ${accountToken}`}})
 }
 
 const upbitApi = () => {
@@ -53,7 +61,7 @@ const upbitApi = () => {
 }
 
 const getOrderListApi = () => {
-    return axios.get("https://cors-anywhere.herokuapp.com/"+server_url+'/v1/orders?'+query, {headers: {Authorization: `Bearer ${token}`}, data: body})
+    return axios.get("https://cors-anywhere.herokuapp.com/"+server_url+'/v1/orders?'+query, {headers: {Authorization: `Bearer ${orderToken}`}, data: body})
 }
 
 export const useGetAccounts = () => {
@@ -104,7 +112,7 @@ export const useGetOrderList = () => {
         console.log('==========호출실패==========',error);
     } 
 
-    return useQuery('allMarkets', upbitApi, {
+    return useQuery('orderLists', getOrderListApi, {
         onSuccess,
         onError,
         select: (data) => {

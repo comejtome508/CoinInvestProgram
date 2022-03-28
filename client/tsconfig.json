@@ -7,15 +7,6 @@
       "esnext"
     ],
     "baseUrl": "./src",
-    "paths": {
-      "@hooks/*": ["hooks/*"],
-      "@components/*": ["components/*"],
-      "@layouts/*": ["layouts/*"],
-      "@pages/*": ["pages/*"],
-      "@utils/*": ["utils/*"],
-      "@typings/*": ["typings/*"],
-      "@queries/*": ["queries/*"],
-    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -31,6 +22,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "src/configs",
+    "react-app-env.d.ts"
+  ],
+  "extends": "./tsconfig.paths.json" 
 }

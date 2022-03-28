@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Table } from 'antd';
-import { useGetAccounts, useGetAllMarketCode } from '../../queries/upbitQueries';
+import { useGetOrderList } from '../../queries/upbitQueries';
 
 
 const TradingTable = () => {
@@ -36,9 +36,11 @@ const TradingTable = () => {
           key: 'address',
         },
       ];
-      const { isLoading, data, isError, error, isFetching} = useGetAccounts();
+      const { isLoading, data, isError, error, isFetching} = useGetOrderList();
    
       useEffect(() => {}, [])
+
+      console.log("data in table : ", data)
 
   return (
     <>
