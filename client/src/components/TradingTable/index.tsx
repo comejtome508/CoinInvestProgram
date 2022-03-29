@@ -1,44 +1,109 @@
 import React, {useState, useEffect} from 'react'
 import { Table } from 'antd';
-import { useGetOrderList } from '../../queries/upbitQueries';
+import { useGetOrderList } from 'queries/upbitQueries';
+import _ from 'lodash';
+import { TradingList } from 'typing/TradingTable';
 
 
 const TradingTable = () => {
-    const dataSource = [
-        {
-          key: '1',
-          name: 'Mike',
-          age: 32,
-          address: '10 Downing Street',
-        },
-        {
-          key: '2',
-          name: 'John',
-          age: 42,
-          address: '10 Downing Street',
-        },
+    const dataSource:any = [
+        // {
+        //   key: '',
+        //   side: '',
+        //   price: '',
+        //   created_at : '',
+        //   executed_volume : '',
+        //   paid_fee : '' 
+        // },
       ];
       
       const columns = [
         {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
+          title: '주문 종류',
+          dataIndex: 'side',
+          key: 'side',
         },
         {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
+          title: '주문시 가격',
+          dataIndex: 'price',
+          key: 'price',
         },
         {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
+          title: '주문 시간',
+          dataIndex: 'created_at',
+          key: 'created_at',
         },
+        {
+          title: '체결량',
+          dataIndex: 'executed_volume',
+          key: 'executed_volume',
+        },
+        {
+          title: '수수료',
+          dataIndex: 'paid_fee',
+          key: 'paid_fee',
+        },
+
       ];
       const { isLoading, data, isError, error, isFetching} = useGetOrderList();
    
-      useEffect(() => {}, [])
+      useEffect(()=>{
+        makeListData();
+      }, [data]);
+
+      const makeListData = () => {
+        const copiedData = _.cloneDeep(data?.data);
+        let tempData:TradingList = {
+          key: '',
+          side: '',
+          price: '',
+          created_at: '',
+          executed_volume: '',
+          paid_fee: ''
+        };
+        copiedData?.map((listItem:any, key:number)=>{
+          for (const item in listItem) {
+            switch (item) {
+              case 'key':
+                tempData['key'] = copiedData?.key;
+                break;
+              case 'side':
+                tempData['side'] = copiedData?.side;
+                break; 
+              case 'price':
+                tempData['price'] = copiedData?.price;
+                break;
+              case 'created_at':
+                tempData['created_at'] = copiedData?.created_at;
+                break; 
+              case 'created_at':
+                tempData['created_at'] = copiedData?.created_at;
+                break; 
+              case 'executed_volume':
+                tempData['executed_volume'] = copiedData?.executed_volume;
+                break; 
+              case 'paid_fee':
+                tempData['paid_fee'] = copiedData?.paid_fee;
+                break; 
+              
+              default:
+                break;
+            }
+            console.log("tempData : ", tempData)
+            dataSource.push(tempData)
+          }
+        })
+
+        // {
+        //   key: '',
+        //   side: '',
+        //   price: '',
+        //   created_at : '',
+        //   executed_volume : '',
+        //   paid_fee : '' 
+        // },
+
+      };
 
       console.log("data in table : ", data)
 
