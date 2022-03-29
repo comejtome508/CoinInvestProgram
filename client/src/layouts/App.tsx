@@ -4,7 +4,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { Menu, Button, Layout, Breadcrumb } from 'antd';
 
 import Dashboard from 'pages/dashboard';
-import Gnb from '../components/Gnb/gnb';
+import Gnb from 'components/Gnb/gnb';
 import 'antd/dist/antd.css';
 
 const { Header, Sider, Content, Footer } = Layout;
