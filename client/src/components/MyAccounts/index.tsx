@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetAccounts, useGetAllMarketCode } from '../../queries/upbitQueries';
+import { useGetAccounts, useGetAllMarketCode } from 'queries/upbitQueries';
 
 const MyAccounts = () => {
 
@@ -18,7 +18,7 @@ const MyAccounts = () => {
                 <strong>보유코인</strong>
                 <ul>
                     {data.map((coin:any, i:number)=>{
-                        return( i > 0 && <li>{coin.currency} : {coin.balance}</li>)
+                        return( i > 0 && <li key={i}>{coin.currency} : {coin.balance}</li>)
                         })}
                 </ul>
             </div>
