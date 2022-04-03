@@ -34,6 +34,10 @@ const Gnb = () => {
         <Menu.Item key="1" icon={<DesktopOutlined />}>
           <Link to="/">대시보드</Link>
         </Menu.Item>
+        <Menu.Item key="2" icon={<ContainerOutlined />}>
+        <Link to="/shareBoard">정보토론</Link>
+          
+        </Menu.Item>
         {/* <Menu.Item key="2" icon={<PieChartOutlined />}>
           Option 2
         </Menu.Item>

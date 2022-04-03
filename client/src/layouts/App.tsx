@@ -4,6 +4,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { Menu, Button, Layout, Breadcrumb } from 'antd';
 
 import Dashboard from 'pages/dashboard';
+import ShareBoard from 'pages/shareBoard';
 import Gnb from 'components/Gnb/gnb';
 import 'antd/dist/antd.css';
 
@@ -18,13 +19,14 @@ const App = () => {
           <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} />
             <Content style={{ margin: '0 16px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
+              {/* <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>User</Breadcrumb.Item>
                 <Breadcrumb.Item>Bill</Breadcrumb.Item>
-              </Breadcrumb>
+              </Breadcrumb> */}
 
               <Routes>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="/shareBoard" element={<ShareBoard />} />
               </Routes>
 
             </Content>
