@@ -6,7 +6,7 @@ function PostCard() {
     <div className="site-card-wrapper">
           <PageHeader
                 className="site-page-header"
-                onBack={() => null}
+                // onBack={() => null}
                 title="정보 공유 및 토론"
                 // subTitle="This is a subtitle"
                 extra={[
@@ -15,7 +15,7 @@ function PostCard() {
             />
         <Row gutter={[8,8]}>
             <Col span={12}>
-                <Card title="Card title" bordered={true}>
+                <Card title="Card title" bordered={true} onClick={()=>{console.log("click")}}>
                 Card content
                 </Card>
             </Col>
@@ -28,6 +28,5 @@ function PostCard() {
     {/* <Pagination size="small" total={50} /> */}
     </div>
   )
-}
-;
+};
 export default PostCard;

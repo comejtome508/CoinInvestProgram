@@ -57,7 +57,7 @@ const getAccountsApi = () => {
 }
 
 const upbitApi = () => {
-    return axios.get( "https://cors-anywhere.herokuapp.com/"+server_url+'/v1/market/all?isDetails=false')
+    return axios.get("https://cors-anywhere.herokuapp.com/"+server_url+'/v1/market/all?isDetails=false')
 }
 
 const getOrderListApi = () => {
