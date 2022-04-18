@@ -1,5 +1,5 @@
 import React, { useState, } from 'react';
-import { Menu, Button, Layout, Breadcrumb } from 'antd';
+import { Menu, Button, Layout, Breadcrumb, Avatar } from 'antd';
 import {Link} from 'react-router-dom';
 import {
   AppstoreOutlined,
@@ -12,8 +12,6 @@ import {
   UserOutlined,
   TeamOutlined,
   FileOutlined,
-
-
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 

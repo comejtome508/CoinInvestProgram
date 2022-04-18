@@ -8,9 +8,9 @@ import TradingTable from 'components/TradingTable';
 const index = () => {
   return (
       <>
-        <MyAccounts />
-        <RealtimeChart />
-        <TradingTable />
+        {/* <MyAccounts /> */}
+        {/* <RealtimeChart /> */}
+        {/* <TradingTable /> */}
       </>
   )
 }

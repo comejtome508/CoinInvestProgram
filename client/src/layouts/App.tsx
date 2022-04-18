@@ -1,10 +1,11 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import { Routes, Route, Navigate, Link } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { Menu, Button, Layout, Breadcrumb } from 'antd';
-
+import { Menu, Button, Layout, Breadcrumb, Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import Dashboard from 'pages/dashboard';
 import ShareBoard from 'pages/shareBoard';
+import SignUp from 'pages/signup';
 import Gnb from 'components/Gnb/gnb';
 import 'antd/dist/antd.css';
 
@@ -12,12 +13,26 @@ const { Header, Sider, Content, Footer } = Layout;
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const onClickSignUp = () => {
+    window.location.href = '/signUp'
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <Layout style={{ minHeight: '100vh' }}>
         <Gnb />
           <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Header className="site-layout-background" style={{ padding: 0, display: 'flex', justifyContent: 'flex-end' }} >
+          <div style={{alignSelf: 'center', marginRight:10}} >
+            {isLoggedIn 
+            ? <Avatar icon={<UserOutlined />} /> 
+            : <>
+            <Button>로그인</Button>
+            <Button onClick={onClickSignUp}>회원가입</Button>
+            </>}
+            </div>
+          </Header>
             <Content style={{ margin: '0 16px' }}>
               {/* <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>User</Breadcrumb.Item>
@@ -27,6 +42,7 @@ const App = () => {
               <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/shareBoard" element={<ShareBoard />} />
+                  <Route path="/signUp" element={<SignUp />} />
               </Routes>
 
             </Content>
