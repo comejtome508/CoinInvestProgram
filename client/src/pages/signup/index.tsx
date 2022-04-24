@@ -1,14 +1,17 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react';
+import { useQuery } from 'react-query';
 import { Form, Input, Checkbox, Button } from 'antd';
 import useInput from 'hooks/useInput';
 import styled from 'styled-components';
+import { useSignUp } from 'queries/signupQueries';
 
 const ErrorMessage = styled.div`
     color: red;
 `;
 
 const Index = () => {
-    const [id, onChangeId] = useInput('');
+    const { mutate: submitData } = useSignUp();
+    const [email, onChangeEmail] = useInput('');
     const [nickname, onChangeNickname] = useInput('');
     const [password, onChangePassword] = useInput('');
     const [passwordCheck, setPasswordCheck] = useState('');
@@ -21,15 +24,19 @@ const Index = () => {
         if(password !== passwordCheck) {
             return setPasswordError(true);
         }
-
+        submitData({ 
+            email : email, 
+            nickname : nickname,
+            password : password
+        })
     },[password, passwordCheck]);
 
   return (
     <Form onFinish={onSubmit}>
         <div>
-            <label htmlFor='user-id'>아이디</label>
+            <label htmlFor='user-id'>이메일</label>
             <br />
-            <Input name="user-id" value={id} required onChange={onChangeId} />
+            <Input name="user-id" value={email} required onChange={onChangeEmail} />
         </div>
         <div>
             <label htmlFor='user-nickname'>닉네임</label>
@@ -39,12 +46,12 @@ const Index = () => {
         <div>
             <label htmlFor='user-password'>비밀번호</label>
             <br />
-            <Input name="user-password" value={password} required onChange={onChangePassword} />
+            <Input name="user-password" type={"password"} value={password} required onChange={onChangePassword} />
         </div>
         <div>
             <label htmlFor='user-password-check'>비밀번호 확인</label>
             <br />
-            <Input name="user-password-check" value={passwordCheck} required onChange={onChangePasswordCheck} />
+            <Input name="user-password-check" type={"password"} value={passwordCheck} required onChange={onChangePasswordCheck} />
             {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>}
         </div>
         <div style={{ marginTop: 10 }}>

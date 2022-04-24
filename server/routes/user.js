@@ -23,7 +23,7 @@ router.post('/', async (req, res, next) => {
             nickname: req.body.nickname,
             password: hashedPassword,
         });
-        res.status(200).send('ok');
+        res.status(200).send('요청 처리 성공');
     } catch (error) {
         console.error(error);
         //next로 에러를 보내면 한방에 처리함
