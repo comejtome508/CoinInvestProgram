@@ -1,12 +1,15 @@
 const express = require('express');
 const session = require('express-session');
-const cookieParser = requrie('cookie-parser');
-
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
 // const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
+const passport = require('passport');
 const cors = require('cors');
 const db = require('./models');
 const passportConfig = require('./passport');
+
+dotenv.config();
 const app = express();
 
 db.sequelize.sync()
@@ -27,7 +30,12 @@ app.use(cors({
 // 프론트에서 받은 json 데이터를 서버 route 파일에서 req로 받을 수 있게 변환시켜줌
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(ssesion());
+app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(session({
+    saveUninitialized: false,
+    resave: false,
+    secret: process.env.COOKIE_SECRET,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
