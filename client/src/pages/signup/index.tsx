@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { Form, Input, Checkbox, Button } from 'antd';
 import useInput from 'hooks/useInput';
 import styled from 'styled-components';
-import { useSignUp } from 'queries/signupQueries';
+import { useSignUp } from 'queries/userQueries';
 
 const ErrorMessage = styled.div`
     color: red;

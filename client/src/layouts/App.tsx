@@ -6,6 +6,7 @@ import { UserOutlined } from '@ant-design/icons';
 import Dashboard from 'pages/dashboard';
 import ShareBoard from 'pages/shareBoard';
 import SignUp from 'pages/signup';
+import Login from 'pages/login';
 import Gnb from 'components/Gnb/gnb';
 import 'antd/dist/antd.css';
 
@@ -16,6 +17,9 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const onClickSignUp = () => {
     window.location.href = '/signUp'
+  }
+  const onClickLogin = () => {
+    window.location.href = '/login'
   }
 
   return (
@@ -28,7 +32,7 @@ const App = () => {
             {isLoggedIn 
             ? <Avatar icon={<UserOutlined />} /> 
             : <>
-            <Button>로그인</Button>
+            <Button onClick={onClickLogin}>로그인</Button>
             <Button onClick={onClickSignUp}>회원가입</Button>
             </>}
             </div>
@@ -43,6 +47,7 @@ const App = () => {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/shareBoard" element={<ShareBoard />} />
                   <Route path="/signUp" element={<SignUp />} />
+                  <Route path="/login" element={<Login />}/>
               </Routes>
 
             </Content>

@@ -3,6 +3,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const { User } = require('../models');
 const { nextTick } = require('process');
+const passport = require('passport');
 
 const router = express.Router();
 
