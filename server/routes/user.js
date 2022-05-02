@@ -6,6 +6,27 @@ const { nextTick } = require('process');
 
 const router = express.Router();
 
+// 권한 인증 전략 실행
+// 미들웨어 확장 스타일
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            console.error(err);
+            return next(err);
+        }
+        if (info) {
+            return res.status(401).send(info.reason);
+        }
+        return req.login(user, async (loginErr) => {
+            if (loginErr) {
+                console.err(loginErr);
+                return next(loginErr);
+            }
+            return res.status(200).json(user);
+        })
+    })(req, res, next);
+});
+
 router.post('/', async (req, res, next) => {
     try{
         const exUser = await User.findOne({
