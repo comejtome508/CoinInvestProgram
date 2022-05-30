@@ -9,6 +9,7 @@ import SignUp from 'pages/signup';
 import Login from 'pages/login';
 import Gnb from 'components/Gnb/gnb';
 import 'antd/dist/antd.css';
+import CardDetail from 'components/CardDetail';
 
 const { Header, Sider, Content, Footer } = Layout;
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => {
                   <Route path="/shareBoard" element={<ShareBoard />} />
                   <Route path="/signUp" element={<SignUp />} />
                   <Route path="/login" element={<Login />}/>
+                  <Route path="/cardDetail" element={<CardDetail />} />
               </Routes>
 
             </Content>

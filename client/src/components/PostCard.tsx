@@ -1,7 +1,9 @@
 import React from 'react'
 import { Card, Col, Row, Pagination,PageHeader, Button } from 'antd';
+import { useNavigate } from 'react-router';
 
-function PostCard() {
+const PostCard = () => {
+const navigate = useNavigate();
   return (
     <div className="site-card-wrapper">
           <PageHeader
@@ -15,12 +17,7 @@ function PostCard() {
             />
         <Row gutter={[8,8]}>
             <Col span={12}>
-                <Card title="Card title" bordered={true} onClick={()=>{console.log("click")}}>
-                Card content
-                </Card>
-            </Col>
-            <Col span={12}>
-                <Card title="Card title" bordered={false}>
+                <Card title="Card title" bordered={true} onClick={() => navigate('/cardDetail')}>
                 Card content
                 </Card>
             </Col>
