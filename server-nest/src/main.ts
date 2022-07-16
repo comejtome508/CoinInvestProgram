@@ -16,11 +16,12 @@ dotenv.config({
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-    }),
-  );
-  await app.listen(3000);
+  // app.useGlobalPipes(
+  //   new ValidationPipe({
+  //     transform: true,
+  //   }),
+  // );
+  await app.listen(8000);
+  console.log('서버 실행 중...');
 }
 bootstrap();
