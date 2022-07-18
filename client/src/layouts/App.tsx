@@ -3,13 +3,13 @@ import { Routes, Route, Navigate, Link } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { Menu, Button, Layout, Breadcrumb, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import Dashboard from 'pages/dashboard';
-import ShareBoard from 'pages/shareBoard';
+import Dashboard from 'pages/Dashboard';
+import ShareBoard from 'pages/Board/List';
 import SignUp from 'pages/signup';
-import Login from 'pages/login';
-import Gnb from 'components/Gnb/gnb';
+import Login from 'pages/Login';
+import BoardDetail from 'pages/Board/Detail';
+import Gnb from "../components/common/Gnb";
 import 'antd/dist/antd.css';
-import CardDetail from 'components/CardDetail';
 
 const { Header, Sider, Content, Footer } = Layout;
 const queryClient = new QueryClient();
@@ -49,7 +49,7 @@ const App = () => {
                   <Route path="/shareBoard" element={<ShareBoard />} />
                   <Route path="/signUp" element={<SignUp />} />
                   <Route path="/login" element={<Login />}/>
-                  <Route path="/cardDetail" element={<CardDetail />} />
+                  <Route path="/boardDetail" element={<BoardDetail />} />
               </Routes>
 
             </Content>

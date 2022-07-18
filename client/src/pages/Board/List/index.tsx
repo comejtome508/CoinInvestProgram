@@ -1,5 +1,5 @@
 import React from 'react'
-import PostCard from 'components/PostCard'
+import BoardCard from "../../../components/board/BoardCard";
 
 const initialState = {
     mainPosts : [{
@@ -30,7 +30,7 @@ const initialState = {
 function index() {
   return (
     <>
-        <PostCard />
+        <BoardCard />
     </>
   )
 }

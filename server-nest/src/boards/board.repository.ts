@@ -1,11 +1,19 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { Board } from './board.entity';
 import { BoardStatus } from './board.model';
 import { CreateBoardDto } from './dto/create-board.dto';
-import { NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
-@EntityRepository(Board)
+// @EntityRepository(Board)
+@Injectable()
 export class BoardRepository extends Repository<Board> {
+  constructor(private readonly dataSource: DataSource) {
+    super(
+      Board,
+      dataSource.createEntityManager(),
+      dataSource.createQueryRunner(),
+    );
+  }
   async getBoardById(id: number): Promise<Board> {
     const found = await this.findOneBy({ id });
 

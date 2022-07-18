@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Col, Row, Pagination,PageHeader, Button } from 'antd';
 import { useNavigate } from 'react-router';
 
-const PostCard = () => {
+const BoardCard = () => {
 const navigate = useNavigate();
   return (
     <div className="site-card-wrapper">
@@ -17,7 +17,7 @@ const navigate = useNavigate();
             />
         <Row gutter={[8,8]}>
             <Col span={12}>
-                <Card title="Card title" bordered={true} onClick={() => navigate('/cardDetail')}>
+                <Card title="Card title" bordered={true} onClick={() => navigate('/boardDetail')}>
                 Card content
                 </Card>
             </Col>
@@ -26,4 +26,4 @@ const navigate = useNavigate();
     </div>
   )
 };
-export default PostCard;
+export default BoardCard;
