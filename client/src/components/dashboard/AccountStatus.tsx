@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetAccounts, useGetAllMarketCode } from 'queries/upbitQueries';
+import { useGetAccounts, useGetAllMarketCode } from 'queries/UpbitQueries';
 
 const AccountStatus = () => {
 

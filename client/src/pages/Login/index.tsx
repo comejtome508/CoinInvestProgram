@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Form, Input, Checkbox, Button } from 'antd';
 import useInput from 'hooks/useInput';
-import { useLogin } from 'queries/userQueries';
+import { useLogin } from 'queries/UserQueries';
 
 
 const Index = () => {

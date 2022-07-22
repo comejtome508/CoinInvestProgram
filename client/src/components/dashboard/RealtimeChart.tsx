@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import { QuoationService } from "node-upbit";
 
-import { useGetAccounts, useGetAllMarketCode } from '../../queries/upbitQueries';
+import { useGetAccounts, useGetAllMarketCode } from '../../queries/UpbitQueries';
 
 
 const RealtimeChart = () => {
