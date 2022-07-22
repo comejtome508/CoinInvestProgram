@@ -12,7 +12,16 @@ import Gnb from "../components/common/Gnb";
 import 'antd/dist/antd.css';
 
 const { Header, Sider, Content, Footer } = Layout;
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnMount: false,
+            refetchOnReconnect: false,
+            refetchOnWindowFocus: false,
+            refetchInterval: false,
+        }
+    }
+});
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
