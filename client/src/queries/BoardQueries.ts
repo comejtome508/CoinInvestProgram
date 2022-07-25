@@ -7,9 +7,9 @@ import {IBoardParam} from "../typing/Board";
 export const useGetAllBoardList = () => {
     return useQuery(
         boardKeys.list(),
-        () => BoardService.getAllBoardLists(),
+        () =>  BoardService.getAllBoardLists(),
         {
-            enabled: false,
+            // enabled: false,
             onError: (error) => {
 
             },
@@ -23,7 +23,7 @@ export const useGetAllBoardList = () => {
 
 export const useGetBoardItemWIthId = (param:any) => {
     return useQuery(
-        boardKeys.listItem(),
+        boardKeys.listItemDetail(),
         () => BoardService.getBoardItemWithId(param),
         {
             enabled: false,
@@ -31,7 +31,7 @@ export const useGetBoardItemWIthId = (param:any) => {
 
             },
             onSuccess: (data) => {
-                console.log("=================게시판 등록 성공====================");
+                console.log("=================게시판 상세 데이터 호출 성공====================");
                 console.log("data : ", data);
             },
         }
@@ -40,7 +40,7 @@ export const useGetBoardItemWIthId = (param:any) => {
 
 export const useCreateBoardItem = (createBoardParam: IBoardParam) => {
     return useMutation(
-        boardKeys.create(),
+        boardKeys.createBoardItem(),
         () => BoardService.createBoardItem(createBoardParam),
         {
             onError: (error, variables, context) => {

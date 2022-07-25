@@ -2,13 +2,15 @@ import React, {useEffect} from 'react'
 import { Card, Col, Row, Pagination,PageHeader, Button } from 'antd';
 import { useNavigate } from 'react-router';
 import {useGetAllBoardList} from "../../queries/BoardQueries";
+import {useQuery} from "react-query";
+import {boardKeys} from "../../queries/QueryKeys";
+import {BoardService} from "../../services/BoardService";
+import {IBoardParam} from "../../typing/Board";
 
 const BoardCard = () => {
 const navigate = useNavigate();
-const getAllBoardList = useGetAllBoardList();
-    useEffect(() => {
-        getAllBoardList.refetch();
-    },[]);
+const {isLoading:isLoadingListData, isError, data:allList, error } = useGetAllBoardList();
+
   return (
     <div className="site-card-wrapper">
           <PageHeader
@@ -20,15 +22,21 @@ const getAllBoardList = useGetAllBoardList();
                     <Button key="1">글쓰기</Button>
                 ]}
             />
-        <Row gutter={[8,8]}>
+    {allList?.data.length > 0 &&
+        <Row gutter={[8, 8]}>
             <Col span={12}>
-                {/*boardItem && {*/}
-                <Card title={"this is title"} bordered={true} onClick={() => navigate('/boardDetail')}>
-                    Card content
-                </Card>
-            {/*}*/}
+                {
+                    allList?.data.map((listItem:IBoardParam,idx:number) => {
+                        return (
+                            <Card title={`${listItem.title}`} bordered={true} onClick={() => navigate('/boardDetail/' + listItem.id)}>
+                                {listItem.description}
+                            </Card>
+                        )
+                    })
+                }
             </Col>
         </Row>
+    }
     {/* <Pagination size="small" total={50} /> */}
     </div>
   )
