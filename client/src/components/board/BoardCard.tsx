@@ -2,9 +2,6 @@ import React, {useEffect} from 'react'
 import { Card, Col, Row, Pagination,PageHeader, Button } from 'antd';
 import { useNavigate } from 'react-router';
 import {useGetAllBoardList} from "../../queries/BoardQueries";
-import {useQuery} from "react-query";
-import {boardKeys} from "../../queries/QueryKeys";
-import {BoardService} from "../../services/BoardService";
 import {IBoardParam} from "../../typing/Board";
 
 const BoardCard = () => {
@@ -19,7 +16,7 @@ const {isLoading:isLoadingListData, isError, data:allList, error } = useGetAllBo
                 title="정보 공유 및 토론"
                 // subTitle="This is a subtitle"
                 extra={[
-                    <Button key="1">글쓰기</Button>
+                    <Button key="1" onClick={() => navigate('/createBoard/')}>글쓰기</Button>
                 ]}
             />
     {allList?.data.length > 0 &&

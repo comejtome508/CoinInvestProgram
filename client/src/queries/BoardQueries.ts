@@ -1,7 +1,6 @@
 import {useMutation, useQuery} from "react-query";
 import {BoardService} from "../services/BoardService";
 import {boardKeys} from "./QueryKeys";
-import {IBoardParam} from "../typing/Board";
 
 
 export const useGetAllBoardList = () => {
@@ -11,6 +10,7 @@ export const useGetAllBoardList = () => {
         {
             // enabled: false,
             onError: (error) => {
+                console.log("=================게시판 호출 실패====================");
 
             },
             onSuccess: (data) => {
@@ -38,10 +38,9 @@ export const useGetBoardItemWIthId = (param:any) => {
     )
 };
 
-export const useCreateBoardItem = (createBoardParam: IBoardParam) => {
+export const useCreateBoardItem = () => {
     return useMutation(
-        boardKeys.createBoardItem(),
-        () => BoardService.createBoardItem(createBoardParam),
+        BoardService.createBoardItem,
         {
             onError: (error, variables, context) => {
                 console.log("=================게시판 등록 실패====================");

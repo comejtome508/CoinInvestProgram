@@ -1,26 +1,14 @@
 import React from 'react'
 import {useNavigate} from "react-router";
 import {Button, Layout, PageHeader} from "antd";
+import BoardContentHeader from "../../../components/board/BoardContentHeader";
 
 const { Content } = Layout;
 
 const Index = () => {
-    const navigate = useNavigate();
-
     return(
         <div className="site-page-header-ghost-wrapper">
-            <PageHeader
-                ghost={false}
-                onBack={() => navigate('/shareBoard')}
-                title="Title"
-                subTitle="This is a subtitle"
-                extra={[
-                    <Button key="1" type="primary">
-                        수정하기
-                    </Button>,
-                ]}
-            >
-            </PageHeader>
+            <BoardContentHeader navigateTo={'/shareBoard'} menuType={'detail'} />
             <Content
                 className="site-layout-background"
                 style={{

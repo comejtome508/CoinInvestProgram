@@ -8,6 +8,7 @@ import ShareBoard from 'pages/Board/List';
 import SignUp from 'pages/signup';
 import Login from 'pages/Login';
 import BoardDetail from 'pages/Board/Detail';
+import CreateBoard from 'pages/Board/Create';
 import Gnb from "../components/common/Gnb";
 import 'antd/dist/antd.css';
 
@@ -59,6 +60,7 @@ const App = () => {
                   <Route path="/signUp" element={<SignUp />} />
                   <Route path="/login" element={<Login />}/>
                   <Route path="/boardDetail" element={<BoardDetail />} />
+                  <Route path="/createBoard" element={<CreateBoard />} />
               </Routes>
 
             </Content>
