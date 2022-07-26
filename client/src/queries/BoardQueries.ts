@@ -26,13 +26,13 @@ export const useGetBoardItemWIthId = (param:any) => {
         boardKeys.listItemDetail(),
         () => BoardService.getBoardItemWithId(param),
         {
-            enabled: false,
             onError: (error) => {
+                console.log("=================게시판 상세 데이터 호출 실패====================");
 
             },
             onSuccess: (data) => {
                 console.log("=================게시판 상세 데이터 호출 성공====================");
-                console.log("data : ", data);
+                console.log("detail data : ", data);
             },
         }
     )
@@ -40,6 +40,7 @@ export const useGetBoardItemWIthId = (param:any) => {
 
 export const useCreateBoardItem = () => {
     return useMutation(
+        boardKeys.createBoardItem(),
         BoardService.createBoardItem,
         {
             onError: (error, variables, context) => {

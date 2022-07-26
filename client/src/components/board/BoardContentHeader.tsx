@@ -22,11 +22,13 @@ const BoardContentHeader = ({ navigateTo, title, menuType }: HeaderProps) => {
                     <Button key="1" type="primary">
                         {menuType === 'detail' && '수정'}
                     </Button>,
+                    <Button key="2" danger type="text">
+                        {menuType === 'detail' && '삭제'}
+                    </Button>,
                 ]}
             >
             </PageHeader>
         </div>
     )
 }
-
 export default BoardContentHeader;

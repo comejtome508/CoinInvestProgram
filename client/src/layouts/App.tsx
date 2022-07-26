@@ -59,7 +59,7 @@ const App = () => {
                   <Route path="/shareBoard" element={<ShareBoard />} />
                   <Route path="/signUp" element={<SignUp />} />
                   <Route path="/login" element={<Login />}/>
-                  <Route path="/boardDetail" element={<BoardDetail />} />
+                  <Route path="/boardDetail/:id" element={<BoardDetail />} />
                   <Route path="/createBoard" element={<CreateBoard />} />
               </Routes>
 
