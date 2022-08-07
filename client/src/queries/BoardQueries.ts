@@ -9,6 +9,7 @@ export const useGetAllBoardList = () => {
         () =>  BoardService.getAllBoardLists(),
         {
             // enabled: false,
+            refetchOnMount: true,
             onError: (error) => {
                 console.log("=================게시판 호출 실패====================");
 
@@ -49,6 +50,22 @@ export const useCreateBoardItem = () => {
             },
             onSuccess: (data, variables, context) => {
                 console.log("=================게시판 등록 성공====================");
+            },
+        }
+    )
+}
+
+export const useDeleteBoardItem = (id:string) => {
+    return useMutation(
+        boardKeys.deleteBoardItem(),
+        BoardService.deleteBoardItem,
+        {
+            onError: (error, variables, context) => {
+                console.log("=================게시판 삭제 실패====================");
+
+            },
+            onSuccess: (data, variables, context) => {
+                console.log("=================게시판 삭제 성공====================");
             },
         }
     )

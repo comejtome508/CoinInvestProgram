@@ -19,5 +19,11 @@ export const BoardService = {
         const result = await instance.post(`${API_URL}`, param);
 
         return result;
+    },
+
+    deleteBoardItem: async (id:string) => {
+        const result = await instance.delete(`${API_URL}/${id}`);
+
+        return result;
     }
 }
