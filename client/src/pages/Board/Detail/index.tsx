@@ -15,9 +15,10 @@ const Index = () => {
         <div className="site-page-header-ghost-wrapper">
             {data &&
                 <>
-                    <BoardContentHeader navigateTo={'/shareBoard'} title={data?.data.title} menuType={'detail'} />
+                    <BoardContentHeader navigateTo={'/shareBoard'} title={data?.data.title} menuType={'detail'} id={id}/>
                     <BoardContentBody content={data?.data.description}/>
-                </>}
+                </>
+            }
         </div>
     )
 }
