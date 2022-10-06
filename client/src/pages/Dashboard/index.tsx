@@ -7,9 +7,9 @@ import TradingTable from "../../components/dashboard/TradingTable";
 const index = () => {
   return (
       <>
-        {/* <AccountStatus /> */}
-        {/* <RealtimeChart /> */}
-        {/* <TradingTable /> */}
+         <AccountStatus />
+         {/*<RealtimeChart />*/}
+         {/*<TradingTable />*/}
       </>
   )
 }

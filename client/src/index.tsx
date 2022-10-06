@@ -3,20 +3,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './layouts/App';
 import reportWebVitals from './reportWebVitals';
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
 import 'antd/dist/antd.less';
 
 ReactDOM.render(
     <BrowserRouter>
-      <RecoilRoot>
         <App />
-      </RecoilRoot>
     </BrowserRouter>,
 
   document.getElementById('root')

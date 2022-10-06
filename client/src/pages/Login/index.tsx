@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useQuery } from 'react-query';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Form, Input, Checkbox, Button } from 'antd';
 import useInput from 'hooks/useInput';
 import { useLogin } from 'queries/UserQueries';
@@ -26,7 +27,7 @@ const Index = () => {
         <div>
             <label htmlFor='user-password'>비밀번호</label>
             <br />
-            <Input name="user-password" type={"password"} value={password} required onChange={onChangePassword} />
+            <Input.Password name="user-password" type={"password"} value={password} required onChange={onChangePassword} />
         </div>
         <div style={{ marginTop: 10 }}>
             <Button type="primary" htmlType='submit'>로그인</Button>
