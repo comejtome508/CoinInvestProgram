@@ -52,7 +52,7 @@ const TradingTable = () => {
     }, [data]);
 
     const makeListData = () => {
-        const copiedData = _.cloneDeep(data?.data);
+        // const copiedData = _.cloneDeep(data?.data);
         let tempData:TradingList = {
             key: '',
             side: '',
@@ -61,38 +61,38 @@ const TradingTable = () => {
             executed_volume: '',
             paid_fee: ''
         };
-        copiedData?.map((listItem:any, key:number)=>{
-            for (const item in listItem) {
-                switch (item) {
-                    case 'key':
-                        tempData['key'] = copiedData?.key;
-                        break;
-                    case 'side':
-                        tempData['side'] = copiedData?.side;
-                        break;
-                    case 'price':
-                        tempData['price'] = copiedData?.price;
-                        break;
-                    case 'created_at':
-                        tempData['created_at'] = copiedData?.created_at;
-                        break;
-                    case 'created_at':
-                        tempData['created_at'] = copiedData?.created_at;
-                        break;
-                    case 'executed_volume':
-                        tempData['executed_volume'] = copiedData?.executed_volume;
-                        break;
-                    case 'paid_fee':
-                        tempData['paid_fee'] = copiedData?.paid_fee;
-                        break;
-
-                    default:
-                        break;
-                }
-                console.log("tempData : ", tempData)
-                dataSource.push(tempData)
-            }
-        })
+        // copiedData?.map((listItem:any, key:number)=>{
+        //     for (const item in listItem) {
+        //         switch (item) {
+        //             case 'key':
+        //                 tempData['key'] = copiedData?.key;
+        //                 break;
+        //             case 'side':
+        //                 tempData['side'] = copiedData?.side;
+        //                 break;
+        //             case 'price':
+        //                 tempData['price'] = copiedData?.price;
+        //                 break;
+        //             case 'created_at':
+        //                 tempData['created_at'] = copiedData?.created_at;
+        //                 break;
+        //             case 'created_at':
+        //                 tempData['created_at'] = copiedData?.created_at;
+        //                 break;
+        //             case 'executed_volume':
+        //                 tempData['executed_volume'] = copiedData?.executed_volume;
+        //                 break;
+        //             case 'paid_fee':
+        //                 tempData['paid_fee'] = copiedData?.paid_fee;
+        //                 break;
+        //
+        //             default:
+        //                 break;
+        //         }
+        //         console.log("tempData : ", tempData)
+        //         dataSource.push(tempData)
+        //     }
+        // })
 
         // {
         //   key: '',

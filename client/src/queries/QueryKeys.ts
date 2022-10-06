@@ -6,3 +6,10 @@ export const boardKeys = {
     updateBoardItem: () => [...boardKeys.all,'updateBoardItem'] as const,
     deleteBoardItem: () => [...boardKeys.all, 'deleteBoardItem'] as const,
 }
+
+export const upbitKeys = {
+    all: ['upbit'] as const,
+    allAccounts: () => [...upbitKeys.all, 'allAccounts'] as const,
+    allMarketInfo: () => [...upbitKeys.all, 'allMarketInfo'] as const,
+    orderLists: () => [...upbitKeys.all, 'orderLists'] as const,
+}
