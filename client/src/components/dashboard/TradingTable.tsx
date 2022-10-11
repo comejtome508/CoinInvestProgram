@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Table } from 'antd';
 import { useGetOrderList } from 'queries/UpbitQueries';
 import _ from 'lodash';
-import { TradingList } from 'typing/TradingTable';
+import { Trading } from 'typing/TradingTable';
 
 
 const TradingTable = () => {
@@ -53,7 +53,7 @@ const TradingTable = () => {
 
     const makeListData = () => {
         // const copiedData = _.cloneDeep(data?.data);
-        let tempData:TradingList = {
+        let tempData:Trading = {
             key: '',
             side: '',
             price: '',
