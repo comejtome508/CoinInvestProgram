@@ -3,6 +3,8 @@ import queryString from "query-string";
 import CryptoJS from "crypto-js";
 import {v4 as uuidv4} from "uuid";
 import jwt from "jsonwebtoken";
+import {AxiosResponse} from "axios";
+import {Account} from "../typing/TradingTable";
 
 
 const { sign, verify } = jwt;
@@ -10,7 +12,7 @@ const { sign, verify } = jwt;
 
 const access_key = process.env.REACT_APP_UPBIT_ACCESS_KEY
 const secret_key = process.env.REACT_APP_UPBIT_SECRET_KEY
-const server_url = process.env.REACT_APP_UPBIT_SERVER_URL
+// const server_url = process.env.REACT_APP_UPBIT_SERVER_URL
 
 const UPBIT_API_URL = process.env.REACT_APP_UPBIT_SERVER_URL;
 
@@ -48,26 +50,24 @@ const orderPayload = {
     query_hash_alg: 'SHA512',
 }
 
-console.log("accountPayload : ",accountPayload)
-console.log("secret_key : ",secret_key)
 const accountToken = sign(accountPayload, secret_key!);
 const orderToken = sign(orderPayload, secret_key!);
 
 export const UpbitService = {
-    getAllAccounts: async () => {
-        const data = await instance.get(`${UPBIT_API_URL}/v1/accounts`,
+    getAllAccounts: async (): Promise<Account[]> => {
+        const data = await instance.get(`/api/v1/accounts`,
             {headers: {Authorization: `Bearer ${accountToken}`}}
         );
-        return data;
+        return data.data;
     },
 
     getAllMarketInfo: async () => {
-        const data = await instance.get(`${UPBIT_API_URL}/v1/market/all?isDetails=false`);
+        const data = await instance.get(`/api/v1/market/all?isDetails=false`);
         return data;
     },
 
     getOrderLists: async () => {
-        const data = await instance.get(`${UPBIT_API_URL}/v1/orders?`+query,
+        const data = await instance.get(`/api/v1/orders?`+query,
             {headers: {Authorization: `Bearer ${orderToken}`}, data: body})
     }
 }

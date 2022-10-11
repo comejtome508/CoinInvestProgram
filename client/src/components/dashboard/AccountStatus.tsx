@@ -1,9 +1,10 @@
 import React from 'react';
 import { useGetAccounts, useGetAllMarketCode } from 'queries/UpbitQueries';
+import {Account} from "../../typing/TradingTable";
 
 const AccountStatus = () => {
-
-    const { isLoading:isAccountsLoading, data:accountsData, isError, error, isFetching} = useGetAccounts();
+    const { isLoading:isAccountsLoading, data: accountsData, isError, error, isFetching} = useGetAccounts();
+    const holdingCash:string|undefined = accountsData?.find(item => item.currency === 'KRW')?.balance;
     console.log("account data in real chart : ", accountsData)
     return (
         <>
@@ -13,14 +14,14 @@ const AccountStatus = () => {
                         <>
                         <h1>내 계좌 현황</h1>
                         <div>
-                            {/*<strong>현금 : </strong><span>{Math.floor(accountsData[0].balance).toLocaleString('ko-KR')}원</span>*/}
+                            <strong>현금 : </strong><span>{Math.floor(Number(holdingCash)).toLocaleString('ko-KR')}원</span>
                         </div>
                         <div>
                             <strong>보유코인</strong>
                             <ul>
-                                {/*{accountsData.map((coin:any, i:number)=>{*/}
-                                {/*    return( i > 0 && <li key={i}>{coin.currency} : {coin.balance}</li>)*/}
-                                {/*})}*/}
+                                {accountsData.map((coin:any, i:number)=>{
+                                    return( i > 0 && <li key={i}>{coin.currency} : {coin.balance}</li>)
+                                })}
                             </ul>
                         </div>
                         <br/>
