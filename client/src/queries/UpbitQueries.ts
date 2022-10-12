@@ -41,7 +41,7 @@ export const useGetAllMarketCode = () => {
 export const useGetOrderList = () => {
     return useQuery(
         upbitKeys.orderLists(),
-        // () => UpbitService.getOrderLists(),
+        () => UpbitService.getOrderLists(),
         {
             refetchOnMount: true,
             onError: (error) => {

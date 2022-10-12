@@ -2,20 +2,31 @@ import React, {useState, useEffect} from 'react'
 import { Table } from 'antd';
 import { useGetOrderList } from 'queries/UpbitQueries';
 import _ from 'lodash';
-import { Trading } from 'typing/Dashboard';
+import {OrderInfo, Trading} from 'typing/Dashboard';
+import list from "../../pages/Board/List";
+import dayjs from "dayjs";
 
+interface TableType {
+    key: string,
+    side: string,
+    price: string,
+    created_at : string,
+    executed_volume : string,
+    paid_fee : string
+}
 
 const TradingTable = () => {
-    const dataSource:any = [
-        // {
-        //   key: '',
-        //   side: '',
-        //   price: '',
-        //   created_at : '',
-        //   executed_volume : '',
-        //   paid_fee : ''
-        // },
-    ];
+    const [tableItem, setTableItem] = useState<TableType>(
+        {
+            key: '',
+            side: '',
+            price: '',
+            created_at : '',
+            executed_volume : '',
+            paid_fee : ''
+        }
+    );
+    const [listDataSource,setListDataSource] = useState<TableType[]>([]);
 
     const columns = [
         {
@@ -48,11 +59,12 @@ const TradingTable = () => {
     const { isLoading, data, isError, error, isFetching} = useGetOrderList();
 
     useEffect(()=>{
-        makeListData();
+        makeListData(data);
     }, [data]);
 
-    const makeListData = () => {
-        // const copiedData = _.cloneDeep(data?.data);
+    const makeListData = (data:OrderInfo[]) => {
+        const copiedData = _.cloneDeep(data);
+        let tempList:TableType[] = [];
         let tempData:Trading = {
             key: '',
             side: '',
@@ -61,55 +73,22 @@ const TradingTable = () => {
             executed_volume: '',
             paid_fee: ''
         };
-        // copiedData?.map((listItem:any, key:number)=>{
-        //     for (const item in listItem) {
-        //         switch (item) {
-        //             case 'key':
-        //                 tempData['key'] = copiedData?.key;
-        //                 break;
-        //             case 'side':
-        //                 tempData['side'] = copiedData?.side;
-        //                 break;
-        //             case 'price':
-        //                 tempData['price'] = copiedData?.price;
-        //                 break;
-        //             case 'created_at':
-        //                 tempData['created_at'] = copiedData?.created_at;
-        //                 break;
-        //             case 'created_at':
-        //                 tempData['created_at'] = copiedData?.created_at;
-        //                 break;
-        //             case 'executed_volume':
-        //                 tempData['executed_volume'] = copiedData?.executed_volume;
-        //                 break;
-        //             case 'paid_fee':
-        //                 tempData['paid_fee'] = copiedData?.paid_fee;
-        //                 break;
-        //
-        //             default:
-        //                 break;
-        //         }
-        //         console.log("tempData : ", tempData)
-        //         dataSource.push(tempData)
-        //     }
-        // })
-
-        // {
-        //   key: '',
-        //   side: '',
-        //   price: '',
-        //   created_at : '',
-        //   executed_volume : '',
-        //   paid_fee : ''
-        // },
-
+        copiedData?.map((listItem: OrderInfo, key:number)=>{
+                tempList.push({
+                        key: key.toString(),
+                        side: listItem.side,
+                        price: Number(listItem.price).toLocaleString('ko-KR') + '원',
+                        created_at : dayjs(listItem.created_at).format('YYYY.MM.DD HH:MM'),
+                        executed_volume : listItem.executed_volume,
+                        paid_fee : listItem.paid_fee
+                    });
+        })
+        setListDataSource(tempList);
     };
-
-    console.log("data in table : ", data)
 
     return (
         <>
-            <Table dataSource={dataSource} columns={columns} />
+            <Table dataSource={listDataSource} columns={columns} />
         </>
 
     )

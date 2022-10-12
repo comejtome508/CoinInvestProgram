@@ -8,8 +8,8 @@ const index = () => {
   return (
       <>
          <AccountStatus />
-         {/*<RealtimeChart />*/}
-         {/*<TradingTable />*/}
+         <RealtimeChart />
+         <TradingTable />
       </>
   )
 }

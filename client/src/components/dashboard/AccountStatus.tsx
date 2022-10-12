@@ -1,7 +1,6 @@
 import React from 'react';
-import { useGetAccounts, useGetAllMarketCode } from 'queries/UpbitQueries';
+import { useGetAccounts } from 'queries/UpbitQueries';
 import {Account, Currency} from "../../typing/Dashboard";
-import {filter} from "lodash";
 
 const AccountStatus = () => {
     const { isLoading:isAccountsLoading, data: accountsData, isError, error, isFetching} = useGetAccounts();

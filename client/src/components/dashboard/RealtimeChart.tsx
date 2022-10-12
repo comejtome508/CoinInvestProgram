@@ -1,13 +1,10 @@
-import React,{useEffect} from 'react'
-import { QuoationService } from "node-upbit";
+import React from 'react'
 
-import { useGetAccounts, useGetAllMarketCode } from '../../queries/UpbitQueries';
+import { useGetAllMarketCode } from '../../queries/UpbitQueries';
 
 
 const RealtimeChart = () => {
-
-    // const { isLoading, data, isError, error, isFetching} = useGetAllMarketCode();
-    const { isLoading, data, isError, error, isFetching} = useGetAccounts();
+    const { isLoading, data, isError, error, isFetching} = useGetAllMarketCode();
 
     return (
         <>

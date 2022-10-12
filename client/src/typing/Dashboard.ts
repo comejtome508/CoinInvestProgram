@@ -19,6 +19,24 @@ export interface Account {
     unit_currency: string,
 }
 
+export interface OrderInfo {
+    created_at: string,
+    executed_volume: string,
+    locked: string,
+    market: string,
+    ord_type: string,
+    paid_fee: string,
+    price: string,
+    remaining_fee: string,
+    remaining_volume: string,
+    reserved_fee: string,
+    side: string,
+    state: string,
+    trades_count: number,
+    uuid: string,
+    volume: string,
+}
+
 export enum Currency {
     KRW = 'KRW',
     BTC = 'BTC',

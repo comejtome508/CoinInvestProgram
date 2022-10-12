@@ -62,12 +62,13 @@ export const UpbitService = {
     },
 
     getAllMarketInfo: async () => {
-        const data = await instance.get(`/api/v1/market/all?isDetails=false`);
-        return data;
+        const data = await instance.get(`/api/v1/market/all?isDetails=true`);
+        return data.data;
     },
 
     getOrderLists: async () => {
         const data = await instance.get(`/api/v1/orders?`+query,
             {headers: {Authorization: `Bearer ${orderToken}`}, data: body})
+        return data.data;
     }
 }
