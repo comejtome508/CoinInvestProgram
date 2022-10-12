@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Table } from 'antd';
 import { useGetOrderList } from 'queries/UpbitQueries';
 import _ from 'lodash';
-import { Trading } from 'typing/TradingTable';
+import { Trading } from 'typing/Dashboard';
 
 
 const TradingTable = () => {

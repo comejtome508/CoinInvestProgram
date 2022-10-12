@@ -18,3 +18,8 @@ export interface Account {
     locked: string,
     unit_currency: string,
 }
+
+export enum Currency {
+    KRW = 'KRW',
+    BTC = 'BTC',
+}

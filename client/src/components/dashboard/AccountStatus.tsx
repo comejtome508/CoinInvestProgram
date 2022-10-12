@@ -1,10 +1,11 @@
 import React from 'react';
 import { useGetAccounts, useGetAllMarketCode } from 'queries/UpbitQueries';
-import {Account} from "../../typing/TradingTable";
+import {Account, Currency} from "../../typing/Dashboard";
+import {filter} from "lodash";
 
 const AccountStatus = () => {
     const { isLoading:isAccountsLoading, data: accountsData, isError, error, isFetching} = useGetAccounts();
-    const holdingCash:string|undefined = accountsData?.find(item => item.currency === 'KRW')?.balance;
+    const holdingCash:string|undefined = accountsData?.find(item => item.currency === Currency.KRW)?.balance;
     console.log("account data in real chart : ", accountsData)
     return (
         <>
@@ -19,8 +20,8 @@ const AccountStatus = () => {
                         <div>
                             <strong>보유코인</strong>
                             <ul>
-                                {accountsData.map((coin:any, i:number)=>{
-                                    return( i > 0 && <li key={i}>{coin.currency} : {coin.balance}</li>)
+                                {accountsData.filter(coin => coin.currency !== Currency.KRW).map((coin: Account, i:number)=>{
+                                    return(<li key={i}>{coin.currency} : {coin.balance}</li>)
                                 })}
                             </ul>
                         </div>
