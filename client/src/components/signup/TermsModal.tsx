@@ -1,13 +1,13 @@
 import { Button, Modal } from 'antd';
 import React, { useState } from 'react';
 
-interface ITermsModalProps {
+interface TermsModalProps {
     children: React.ReactNode;
     handleCloseModal: () => void;
     title: string;
 }
 
-const TermsModal = ({ children, handleCloseModal, title }: ITermsModalProps) => {
+const TermsModal = ({ children, handleCloseModal, title }: TermsModalProps) => {
     return (
         // <div className="terms-popup-wrap">
         //     <div className="layout-popup">

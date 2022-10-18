@@ -1,15 +1,15 @@
-export enum ITerms {
+export enum Terms {
     ACCOUNT = 'ACCOUNT',
     PRIVACY = 'PRIVACY',
     PRIVACY_PROCESS_CONFIRM = 'PRIVACY_PROCESS_CONFIRM',
     NONE = 'NONE',
 }
 
-export interface IRegisterFormValues {
-    email: string;
-    nickname: string;
-    password: string;
-    ['password-confirm']: string;
+export interface RegisterFormValues {
+    email: string|undefined;
+    nickname: string|undefined;
+    password: string|undefined;
+    ['password-confirm']: string|undefined;
     user: {
         attributes: {
             phoneNumber: string;
