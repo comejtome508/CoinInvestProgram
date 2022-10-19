@@ -60,7 +60,7 @@ const PrivacyTerms = () => {
                     <div className="box-desc">
                         <ul className="list-box">
                             <li>
-                                <p>카카오 i 서비스 이용을 위해 수집되는 정보: 서비스 이용 계약 해지 시까지(퇴사 또는 직권 탈퇴 포함)</p>
+                                <p>서비스 이용을 위해 수집되는 정보: 서비스 이용 계약 해지 시까지(퇴사 또는 직권 탈퇴 포함)</p>
                             </li>
                         </ul>
                     </div>
